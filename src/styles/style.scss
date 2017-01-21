@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+svg {
+    display: block;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    width: 400px;
+    user-select: none;
+}
+
+@keyframes mymove {
+    0% {left: 0px;}
+    10% {left: 50px}
+    20% {left: 100px;}
+    30% {left: 150px;}
+    40% {left: 200px;}
+    50% {left: 150px;}
+    60% {left: 100px;}
+    70% {left: 50px;}
+    80% {left: 0px;}
+    90% {left: -50px;}
+    100% {left: 0px;}
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.score-board {
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    margin: 0 auto;
+    min-height: 700px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 1500px;
+}
+
+.score-first-player {
+    height: 400px;
+    width: 300px;
+    outline: 1px solid black;
+}
+
+.score-second-player {
+    height: 400px;
+    width: 300px;
+    outline: 1px solid black;
+}
