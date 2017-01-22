@@ -12,6 +12,13 @@ function Score ({ players }) {
                                 <h1>{player.name.toUpperCase()}</h1>
                                 <p>Throws: {player.throws}</p>
                                 <p>Score: {player.score}</p>
+                                <p>points: </p>
+                                <ul>
+                                    {
+                                        player.points.map((point,
+                                        i) => <li key={i}>{point}</li>)
+                                    }
+                                </ul>
                             </div>
                         </div>
                     );

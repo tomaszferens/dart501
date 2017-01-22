@@ -62,4 +62,26 @@ button {
     outline: 1px solid black;
     display: flex;
     justify-content: space-between;
+
+    .players {
+        ul {
+            width: 150px;
+            height: 80px;
+            margin: 0 auto;
+            outline: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+
+        }
+        li {
+            margin: 2px;
+            list-style: none;
+            height: 17px;
+
+            &::after {
+                content: ", ";
+            }
+        }
+    }
 }

@@ -5,7 +5,8 @@ import {
     START_GAME,
     CLEAR_THROWS,
     CHANGE_SCORE,
-    SET_WINNER
+    SET_WINNER,
+    ADD_POINT
 } from './actionTypes';
 
 const addPlayer = (i) => ({
@@ -43,6 +44,12 @@ const setWinner = (name) => ({
     name
 });
 
+const addPoint = (i, points) => ({
+    type: ADD_POINT,
+    i,
+    points
+});
+
 export { 
     addPlayer, 
     changePlayer, 
@@ -50,5 +57,6 @@ export {
     startGame,
     clearThrows,
     changeScore,
-    setWinner
+    setWinner,
+    addPoint
 };

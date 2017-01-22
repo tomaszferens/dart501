@@ -5,6 +5,7 @@ const START_GAME = 'START_GAME';
 const CLEAR_THROWS = 'CLEAR_THROWS';
 const CHANGE_SCORE = 'CHANGE_SCORE';
 const SET_WINNER = 'SET_WINNER';
+const ADD_POINT = 'ADD_POINT';
 
 export { 
     ADD_PLAYER, 
@@ -13,5 +14,6 @@ export {
     START_GAME,
     CLEAR_THROWS,
     CHANGE_SCORE,
-    SET_WINNER
+    SET_WINNER,
+    ADD_POINT
 };

@@ -5,6 +5,9 @@ import Board from './Board';
 import Score from './Score';
 
 class App extends Component {
+    handleClick() {
+        console.log('test');
+    }
     render() {
         const { players } = this.props;
         const length = players.length;
@@ -18,7 +21,7 @@ class App extends Component {
                 <button
                     onClick={() => this.props.addPlayer(player)}
                     ref={(button) => this.firstButton = button}
-                    disabled={this.props.players.length == 2}
+                    disabled={this.props.isStarted}
                 >
                 ADD PLAYER
                 </button>
@@ -26,6 +29,8 @@ class App extends Component {
                     this.props.winner !== 'none' ? 
                     <h2>Winner: {this.props.winner.toUpperCase()}</h2>: null
                 }
+                <div onClick={this.handleClick}
+                style={{outline: '1px solid black', height: '400px', width: '400px', animation: 'mymove 10s infinite', position: 'relative'}}></div>
             </div>
         );
     }

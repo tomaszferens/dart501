@@ -2,7 +2,8 @@ import {
     ADD_PLAYER,
     INCREMENT_THROWS,
     CLEAR_THROWS,
-    CHANGE_SCORE
+    CHANGE_SCORE,
+    ADD_POINT
 } from '../actions/actionTypes';
 
 const players = (state = [], {i, ...action}) => {
@@ -13,7 +14,8 @@ const players = (state = [], {i, ...action}) => {
             {
                 name: i,
                 score: 501,
-                throws: 0
+                throws: 0,
+                points: []
             }
         ];
     case INCREMENT_THROWS:
@@ -32,6 +34,12 @@ const players = (state = [], {i, ...action}) => {
         return [
             ...state.slice(0, i),
             { ...state[i], score: state[i].score - action.points },
+            ...state.slice(i + 1)
+        ];
+    case ADD_POINT:
+        return [
+            ...state.slice(0, i),
+            { ...state[i], points: [...state[i].points, action.points] },
             ...state.slice(i + 1)
         ];
     default:
