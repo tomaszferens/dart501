@@ -3,24 +3,25 @@ import React from 'react';
 function Board (props) {
     function handleClick(e) {
         const points = Number(e.target.dataset.point);
-        if (props.winner === 'none') {
+        console.log(points);
+        if (props.winner === 'none' && props.players.length >= 2) {
 
-            if (props.currentRound == 'none') {
+            if (props.currentRound === 'none') {
                 props.startGame();
                 props.changePlayer(props.players[0].name);
             } 
             
-            else if (props.currentRound == props.players[0].name) {
+            else if (props.currentRound === props.players[0].name) {
                 if (props.players[0].score - points > 0) {
                     props.incrementThrows(0);
                     props.changeScore(0, points);
-                    if (props.players[0].throws == 2) {
+                    if (props.players[0].throws === 2) {
                         props.clearThrows(0);
                         props.changePlayer(props.players[1].name);   
                     }
                 } else if (props.players[0].score - points < 0) {
                     props.incrementThrows(0);
-                    if (props.players[0].throws == 2) {
+                    if (props.players[0].throws === 2) {
                         props.clearThrows(0);
                         props.changePlayer(props.players[1].name); 
                     }
@@ -32,17 +33,17 @@ function Board (props) {
             } 
             
             
-            else if (props.currentRound == props.players[1].name) {
+            else if (props.currentRound === props.players[1].name) {
                 if (props.players[1].score - points > 0) {
                     props.incrementThrows(1);
                     props.changeScore(1, points);
-                    if (props.players[1].throws == 2) {
+                    if (props.players[1].throws === 2) {
                         props.clearThrows(1);
                         props.changePlayer(props.players[0].name);
                     }
                 } else if (props.players[1].score - points < 0) {
                     props.incrementThrows(1);
-                    if (props.players[1].throws == 2) {
+                    if (props.players[1].throws === 2) {
                         props.clearThrows(1);
                         props.changePlayer(props.players[0].name);
                     }
@@ -56,7 +57,7 @@ function Board (props) {
     }
 
     const animation = {
-        animation: 'mymove 15s infinite'
+        animation: 'mymove 10s infinite'
     };
 
     const styles = {

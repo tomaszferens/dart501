@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import Board from './Board';
-import ScoreBoard from './ScoreBoard';
+import Score from './Score';
 
 class App extends Component {
     render() {
@@ -10,22 +10,21 @@ class App extends Component {
         const length = players.length;
         const player = `player-${length + 1}`;
         return (
-            <div>
-                <ScoreBoard {...this.props}>
-                    <div>
-                        <Board {...this.props} />
-                        <button 
-                            onClick={() => this.props.addPlayer(player)}
-                            ref={(button) => this.firstButton = button}
-                            disabled={this.props.players.length == 2}
-                        >
-                        ADD PLAYER
-                        </button>
-                    </div>
-                </ScoreBoard>
+            <div className="game">
+                <div className="wrap">
+                    <Board {...this.props}/>
+                    <Score {...this.props}/>
+                </div>
+                <button
+                    onClick={() => this.props.addPlayer(player)}
+                    ref={(button) => this.firstButton = button}
+                    disabled={this.props.players.length == 2}
+                >
+                ADD PLAYER
+                </button>
                 {
                     this.props.winner !== 'none' ? 
-                    <h1>Winner: {this.props.winner}</h1> : null
+                    <h2>Winner: {this.props.winner.toUpperCase()}</h2>: null
                 }
             </div>
         );
