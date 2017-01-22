@@ -50,6 +50,10 @@ const addPoint = (i, points) => ({
     points
 });
 
+const reset = () => ({
+    type: 'RESET'
+});
+
 export { 
     addPlayer, 
     changePlayer, 
@@ -58,5 +62,6 @@ export {
     clearThrows,
     changeScore,
     setWinner,
-    addPoint
+    addPoint,
+    reset
 };

@@ -1,19 +1,20 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1 {
     font-size: 18px;
     width: 250px;
     margin: 0 auto;
+    margin-top: 5px;
 }
 
 svg {
     display: block;
     height: 400px;
     position: relative;
-    width: 400px;
+    width: 380px;
     user-select: none;
 }
 
@@ -35,6 +36,8 @@ button {
     display: block;
     margin: 0 auto;
     margin-bottom: 50px;
+    margin-top: 50px;
+
 }
 .game {
     .wrap {
@@ -58,26 +61,26 @@ button {
 
 .score {
     width: 500px;
-    height: 150px;
     outline: 1px solid black;
     display: flex;
+    min-height: 200px;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     .players {
         ul {
             width: 150px;
-            height: 80px;
             margin: 0 auto;
             outline: 1px solid black;
             display: flex;
             flex-wrap: wrap;
             align-content: flex-start;
-
+            min-height: 32px;
+            margin-bottom: 10px;
         }
         li {
             margin: 2px;
             list-style: none;
-            height: 17px;
 
             &::after {
                 content: ", ";

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid } from 'react-bootstrap';
 
 function Board(props) {
     function handlePlayer(i, points, length) {

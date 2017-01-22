@@ -9,6 +9,6 @@ const currentRound = (state = 'none', { name, type }) => {
         default:
             return state;
     }
-}
+};
 
 export default currentRound;
