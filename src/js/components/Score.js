@@ -1,6 +1,7 @@
 import React from 'react';
+import { Label } from 'react-bootstrap';
 
-function Score ({ players }) {
+function Score ({ players, ...props }) {
     return (
         <div className="score">
             {
@@ -9,7 +10,7 @@ function Score ({ players }) {
                     return (
                         <div className="players" key={i}>
                             <div>
-                                <h1>{player.name.toUpperCase()}</h1>
+                                <Label bsStyle={props.currentRound === player.name ? 'success' : 'default'}>{player.name.toUpperCase()}</Label>
                                 <p>Throws: {player.throws}</p>
                                 <p>Score: {player.score}</p>
                                 <p>points: </p>

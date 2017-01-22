@@ -13,7 +13,7 @@ const players = (state = [], {i, ...action}) => {
             ...state,
             {
                 name: i,
-                score: 51,
+                score: 501,
                 throws: 0,
                 points: []
             }
