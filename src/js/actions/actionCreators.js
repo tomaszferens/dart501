@@ -3,7 +3,9 @@ import {
     CHANGE_PLAYER,
     INCREMENT_THROWS,
     START_GAME,
-    CLEAR_THROWS
+    CLEAR_THROWS,
+    CHANGE_SCORE,
+    SET_WINNER
 } from './actionTypes';
 
 const addPlayer = (i) => ({
@@ -13,7 +15,7 @@ const addPlayer = (i) => ({
 
 const changePlayer = (name) => ({
     type: CHANGE_PLAYER,
-    payload: name
+    name
 });
 
 const incrementThrows = (i) => ({
@@ -30,10 +32,23 @@ const clearThrows = (i) => ({
     i
 });
 
+const changeScore = (i, points) => ({
+    type: CHANGE_SCORE,
+    points,
+    i
+});
+
+const setWinner = (name) => ({
+    type: SET_WINNER,
+    name
+});
+
 export { 
     addPlayer, 
     changePlayer, 
     incrementThrows, 
     startGame,
-    clearThrows
+    clearThrows,
+    changeScore,
+    setWinner
 };

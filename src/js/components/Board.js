@@ -1,33 +1,55 @@
 import React from 'react';
 
 function Board (props) {
-    let svgHandler = null;
-
-    const styles = {
-        textAnchor: 'middle',
-        fontWeight: '200px',
-        alignmentBaseline: 'middle'
-    };
-
     function handleClick(e) {
-        console.log(e.target.dataset.point);
-        if (props.players.length == 2) {
+        const points = Number(e.target.dataset.point);
+        if (props.winner === 'none') {
+
             if (props.currentRound == 'none') {
                 props.startGame();
-                props.changePlayer('player1');
-            }
-            else if (props.currentRound == 'player2') {
-                props.incrementThrows(1);
-                if (props.players[1].throws == 2) {
-                    props.clearThrows(1);
-                    props.changePlayer('player1');
+                props.changePlayer(props.players[0].name);
+            } 
+            
+            else if (props.currentRound == props.players[0].name) {
+                if (props.players[0].score - points > 0) {
+                    props.incrementThrows(0);
+                    props.changeScore(0, points);
+                    if (props.players[0].throws == 2) {
+                        props.clearThrows(0);
+                        props.changePlayer(props.players[1].name);   
+                    }
+                } else if (props.players[0].score - points < 0) {
+                    props.incrementThrows(0);
+                    if (props.players[0].throws == 2) {
+                        props.clearThrows(0);
+                        props.changePlayer(props.players[1].name); 
+                    }
+                } else {
+                    props.changeScore(0, points);
+                    props.setWinner(props.players[0].name);
+                    props.startGame();
                 }
-            }
-            else if (props.currentRound == 'player1') {
-                props.incrementThrows(0);
-                if (props.players[0].throws == 2) {
-                    props.clearThrows(0);
-                    props.changePlayer('player2');   
+            } 
+            
+            
+            else if (props.currentRound == props.players[1].name) {
+                if (props.players[1].score - points > 0) {
+                    props.incrementThrows(1);
+                    props.changeScore(1, points);
+                    if (props.players[1].throws == 2) {
+                        props.clearThrows(1);
+                        props.changePlayer(props.players[0].name);
+                    }
+                } else if (props.players[1].score - points < 0) {
+                    props.incrementThrows(1);
+                    if (props.players[1].throws == 2) {
+                        props.clearThrows(1);
+                        props.changePlayer(props.players[0].name);
+                    }
+                } else {
+                    props.changeScore(1, points);
+                    props.setWinner(props.players[1].name);
+                    props.startGame();
                 }
             }
         }
@@ -37,8 +59,14 @@ function Board (props) {
         animation: 'mymove 15s infinite'
     };
 
+    const styles = {
+        textAnchor: 'middle',
+        fontWeight: '200px',
+        alignmentBaseline: 'middle'
+    };
+
     return (
-        <svg style={props.isStarted ? animation : null} version="1.1" viewBox="-250 -250 500 500" width="200mm" ref={svg => svgHandler = svg}>
+        <svg style={props.isStarted ? animation : null} version="1.1" viewBox="-250 -250 500 500" width="200mm">
             <defs>
                 <line id="refwire" stroke="Silver" strokeWidth="1" x1="2.566" x2="26.52" y1="16.20" y2="167.4"/>
                 <path d="M 0 0 L 15.64 98.77 A 100 100 0 0 1 -15.64 98.77 Z" id="SLICE" strokeWidth="0"/>
