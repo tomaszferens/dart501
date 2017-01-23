@@ -1,5 +1,6 @@
 import React from 'react';
-import dataPoints from '../data.js';
+import dataPoints from '../data/dataPoints.js';
+import numbers from '../data/numbers.js';
 
 function Board(props) {
     function handlePlayer(i, points, length) {
@@ -72,9 +73,9 @@ function Board(props) {
                         dataPoints.map((item, key) => (
                             <g transform={`rotate(${item.rotate})`} key={key}>
                                 <use fill={item.firstFill} xlinkHref="#double" data-point={`${item.double}`} onClick={(e) => handleClick(e)} />
-                                <use fill={item.secondFill} xlinkHref="#outer" data-point={`${item.outer}`}  onClick={(e) => handleClick(e)} />
-                                <use fill={item.firstFill} xlinkHref="#triple" data-point={`${item.triple}`}  onClick={(e) => handleClick(e)} />
-                                <use fill={item.secondFill} xlinkHref="#inner" data-point={`${item.inner}`}  onClick={(e) => handleClick(e)} />
+                                <use fill={item.secondFill} xlinkHref="#outer" data-point={`${item.outer}`} onClick={(e) => handleClick(e)} />
+                                <use fill={item.firstFill} xlinkHref="#triple" data-point={`${item.triple}`} onClick={(e) => handleClick(e)} />
+                                <use fill={item.secondFill} xlinkHref="#inner" data-point={`${item.inner}`} onClick={(e) => handleClick(e)} />
                             </g>
                         ))
                     }
@@ -86,40 +87,26 @@ function Board(props) {
                         {
                             dataPoints
                                 .filter(item => item.rotate > 0)
-                                .map(item => (
-                                    <use transform={`rotate(${item.rotate})`} xlinkHref="#refwire" data-point="0" onClick={(e) => handleClick(e)} />
+                                .map((item, key) => (
+                                    <use key={key} transform={`rotate(${item.rotate})`} xlinkHref="#refwire" data-point="0" onClick={(e) => handleClick(e)} />
                                 ))
                         }
-                        <circle fill="none" r="169.5" stroke="Silver" strokeWidth="1" data-point="0" onClick={(e) => handleClick(e)} />
-                        <circle fill="none" r="160.5" stroke="Silver" strokeWidth="1" data-point="0" onClick={(e) => handleClick(e)} />
-                        <circle fill="none" r="106.5" stroke="Silver" strokeWidth="1" data-point="0" onClick={(e) => handleClick(e)} />
-                        <circle fill="none" r="97.5" stroke="Silver" strokeWidth="1" data-point="0" onClick={(e) => handleClick(e)} />
-                        <circle fill="none" r="16.4" stroke="Silver" strokeWidth="1" data-point="0" onClick={(e) => handleClick(e)} />
-                        <circle fill="none" r="6.85" stroke="Silver" strokeWidth="1" data-point="0" onClick={(e) => handleClick(e)} />
+                        {
+                            ['169.5', '160.5', '106.5', '97.5', '16.4', '6.85'].map((r, key) => (
+                                <circle key={key} fill="none" r={r} stroke="Silver" strokeWidth="1" data-point="0" onClick={(e) => handleClick(e)} />
+                            ))
+                        }
                     </g>
                 </g>
             </g>
             <g id="numbers" pointerEvents="none">
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-288)" y="-200">13</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-270)" y="-200">6</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-306)" y="-200">4</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-324)" y="-200">18</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-342)" y="-200">1</text>
-                <text fill="Silver" fontSize="30" style={styles} y="-200">20</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-18)" y="-200">5</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-36)" y="-200">12</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-54)" y="-200">9</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-72)" y="-200">14</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-90)" y="-200">11</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(72)" y="200">8</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(54)" y="200">16</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(36)" y="200">7</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(18)" y="200">19</text>
-                <text fill="Silver" fontSize="30" style={styles} y="200">3</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-18)" y="200">17</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-36)" y="200">2</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-54)" y="200">15</text>
-                <text fill="Silver" fontSize="30" style={styles} transform="rotate(-72)" y="200">10</text>
+            {
+                numbers.map((number, key) => (
+                    <text key={key} fill="Silver" fontSize="30" style={styles} transform={`rotate(${number.rotate})`} y={`${number.y}`}>
+                        {number.number}
+                    </text>
+                ))
+            }
             </g>
         </svg>
     );
